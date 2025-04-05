@@ -1,0 +1,43 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #f8f8f8; /* Light grey background */
+  color: #333; /* Dark grey text */
+}
+
+.App {
+  text-align: center;
+  padding: 20px;
+  max-width: 600px; /* Limit width for better readability */
+  margin: 0 auto; /* Center the app */
+}
+
+.App-header {
+  background-color: #fff; /* White header background */
+  min-height: auto; /* Adjust height */
+  padding: 15px 20px; /* Adjust padding */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #111; /* Darker text for header */
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1); /* Subtle shadow */
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+h1 {
+  margin: 0;
+  font-weight: 600;
+  font-size: 1.5rem; /* Reduce font size */
+}
+
+.App-content {
+  /* Styles for the main content area holding input and list */
+}
+
+/* Add styles for task components later */ 
