@@ -32,4 +32,14 @@ h1 {
   /* Color is now inherited from .App-header */
 }
 
-/* Add styles for task components later */ 
+/* Add styles for task components later */
+
+/* --- Error Message --- */
+.error-message {
+  color: var(--danger-color);
+  background-color: #f8d7da; /* Light red background */
+  border: 1px solid var(--danger-color);
+  padding: 10px;
+  border-radius: 6px;
+  margin-bottom: 15px;
+} 
