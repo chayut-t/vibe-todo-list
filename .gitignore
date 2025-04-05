@@ -128,8 +128,8 @@ dmypy.json
 cython_debug/
 
 # Database files
-todo.db # Explicitly ignore our SQLite DB
-todo.db-journal # Ignore SQLite journal file
+todo.db
+test_todo.db # Also ignore the test database file
 
 # Node.js
 node_modules/

@@ -6,12 +6,7 @@ function TaskList({
   tasks, 
   toggleComplete, 
   deleteTask, 
-  startEdit, 
   saveEdit, 
-  cancelEdit, 
-  editingTaskId, 
-  editText, 
-  setEditText 
 }) {
   return (
     <ul className="task-list">
@@ -21,12 +16,7 @@ function TaskList({
           task={task}
           toggleComplete={toggleComplete}
           deleteTask={deleteTask}
-          startEdit={startEdit}
           saveEdit={saveEdit}
-          cancelEdit={cancelEdit}
-          isEditing={editingTaskId === task.id}
-          editText={editText}
-          setEditText={setEditText}
         />
       ))}
     </ul>

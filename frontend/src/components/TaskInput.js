@@ -12,7 +12,7 @@ function TaskInput({ addTask }) {
   };
 
   return (
-    <form className="task-input-form" onSubmit={handleSubmit}>
+    <form data-testid="task-input-form" className="task-input-form" onSubmit={handleSubmit}>
       <input
         type="text"
         className="task-input"

@@ -1,64 +1,81 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { format } from 'date-fns';
 import './TaskItem.css';
 
 function TaskItem({ 
   task, 
   toggleComplete, 
   deleteTask, 
-  startEdit, 
-  saveEdit, 
-  cancelEdit, 
-  isEditing, 
-  editText, 
-  setEditText 
+  saveEdit,
 }) {
-  const formattedDate = task.createdAt
-    ? `[${task.createdAt.toLocaleString()}]`
-    : '';
+  const [isEditing, setIsEditing] = useState(false);
+  const [currentEditText, setCurrentEditText] = useState(task.title);
+
+  useEffect(() => {
+    if (!isEditing) {
+        setCurrentEditText(task.title);
+    }
+  }, [task.title, isEditing]);
+
+  const formattedDate = task.createdAt instanceof Date && !isNaN(task.createdAt)
+    ? format(task.createdAt, 'Pp')
+    : 'Invalid date';
+
+  const handleStartEdit = () => {
+      setCurrentEditText(task.title);
+      setIsEditing(true);
+  };
+
+  const handleCancelEdit = () => {
+      setIsEditing(false);
+  };
 
   const handleSave = () => {
-    saveEdit(task.id);
+    if (currentEditText.trim() === '') {
+        handleCancelEdit();
+        return;
+    }
+    saveEdit(task.id, currentEditText);
+    setIsEditing(false);
   };
 
   const handleKeyDown = (e) => {
     if (e.key === 'Enter') {
       handleSave();
     } else if (e.key === 'Escape') {
-      cancelEdit();
+      handleCancelEdit();
     }
   };
 
   return (
     <li className={`task-item ${task.completed ? 'task-item--completed' : ''} ${isEditing ? 'task-item--editing' : ''}`}>
       {isEditing ? (
-        // Editing View
         <>
           <input
             type="text"
             className="edit-input"
-            value={editText}
-            onChange={(e) => setEditText(e.target.value)}
+            value={currentEditText}
+            onChange={(e) => setCurrentEditText(e.target.value)}
             onKeyDown={handleKeyDown}
-            autoFocus // Focus the input when editing starts
+            autoFocus
           />
           <button className="save-button edit-action-button" onClick={handleSave}>Save</button>
-          <button className="cancel-button edit-action-button" onClick={cancelEdit}>Cancel</button>
+          <button className="cancel-button edit-action-button" onClick={handleCancelEdit}>Cancel</button>
         </>
       ) : (
-        // Normal View
         <>
           <input
             type="checkbox"
             className="task-checkbox"
             checked={task.completed}
-            onChange={() => toggleComplete(task.id)}
-            disabled={isEditing} // Disable checkbox while editing
+            onChange={() => toggleComplete(task.id, task.completed)}
+            disabled={isEditing}
           />
           <span className="task-title">{task.title}</span>
-          <span className="task-timestamp">{formattedDate}</span>
+          <span className="task-timestamp">[{formattedDate}]</span>
           <button
             className="edit-button action-button"
-            onClick={() => startEdit(task)}
+            onClick={handleStartEdit}
             aria-label="Edit task"
             disabled={isEditing}
           >
