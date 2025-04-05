@@ -1,21 +1,18 @@
 .task-item {
   display: flex;
   align-items: center;
-  background-color: transparent;
-  padding: 10px 0;
-  margin-bottom: 5px;
-  border-radius: 0;
-  box-shadow: none;
-  border-bottom: 1px solid #eee;
-  transition: color 0.2s ease;
-}
-
-.task-item:last-child {
-  border-bottom: none;
+  background-color: #fffcf2;
+  padding: 12px 15px;
+  margin-bottom: 10px;
+  transition: color 0.2s ease, background-color 0.2s ease;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  box-shadow: var(--box-shadow-light);
 }
 
 .task-item--completed {
-  color: #aaa;
+  color: var(--completed-text-color);
+  background-color: #f5f2e9;
 }
 
 .task-checkbox {
@@ -24,16 +21,16 @@
   width: 20px;
   height: 20px;
   appearance: none;
-  border: 1px solid #ccc;
+  border: 1px solid var(--border-color);
   border-radius: 50%;
   position: relative;
   outline: none;
-  transition: border-color 0.2s ease;
+  transition: border-color 0.2s ease, background-color 0.2s ease;
 }
 
 .task-checkbox:checked {
-  border-color: #5c8ef5;
-  background-color: #5c8ef5;
+  border-color: var(--secondary-accent);
+  background-color: var(--secondary-accent);
 }
 
 .task-checkbox:checked::after {
@@ -43,13 +40,13 @@
   left: 7px;
   width: 4px;
   height: 8px;
-  border: solid white;
+  border: solid var(--text-color);
   border-width: 0 2px 2px 0;
   transform: rotate(45deg);
 }
 
 .task-checkbox:hover {
-  border-color: #aaa;
+  border-color: var(--subtle-text-color);
 }
 
 .task-title {
@@ -60,10 +57,95 @@
 
 .task-timestamp {
   font-size: 0.8em;
-  color: #999;
+  color: var(--subtle-text-color);
   white-space: nowrap;
 }
 
 .task-item--completed .task-title {
   text-decoration: line-through;
+}
+
+/* --- Action Buttons --- */
+.action-button {
+  border: none;
+  border-radius: 6px;
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  margin-left: 5px; /* Consistent margin for action buttons */
+  font-size: 1rem;
+  line-height: 28px;
+  text-align: center;
+  opacity: 0;
+  transition: opacity 0.2s ease, background-color 0.2s ease;
+}
+
+.task-item:hover .action-button {
+  opacity: 1;
+}
+
+.edit-button {
+  background-color: var(--secondary-accent); /* Yellow background */
+  color: var(--text-color);
+}
+
+.edit-button:hover {
+  background-color: #e0c03a; /* Darker yellow */
+}
+
+.delete-button {
+  background-color: var(--danger-color);
+  color: var(--text-color);
+  /* Inherits common styles from .action-button */
+}
+
+.delete-button:hover {
+  background-color: #d0563c;
+}
+
+/* Disable hover effect for buttons when editing */
+.task-item--editing:hover .action-button {
+  opacity: 0;
+}
+
+/* --- Editing View Styles --- */
+.task-item--editing {
+  /* Optional: Add distinct style for editing item, e.g., different border */
+  border-color: var(--primary-accent);
+}
+
+.edit-input {
+  flex-grow: 1;
+  padding: 4px 8px;
+  border: 1px solid var(--primary-accent); /* Match focus style */
+  border-radius: 4px;
+  margin-right: 10px;
+}
+
+.edit-input:focus {
+  outline: none;
+}
+
+.edit-action-button {
+  padding: 4px 10px;
+  margin-left: 5px;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  color: white;
+}
+
+.save-button {
+  background-color: #28a745; /* Green for save */
+}
+
+.save-button:hover {
+  background-color: #218838;
+}
+
+.cancel-button {
+  background-color: #6c757d; /* Grey for cancel */
+}
+
+.cancel-button:hover {
+  background-color: #5a6268;
 } 

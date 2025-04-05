@@ -1,0 +1,55 @@
+:root {
+  --background-color: #fefae0; /* Pale Yellow */
+  --text-color: #212529; /* Dark Grey/Black */
+  --primary-accent: #f4a261; /* Orange */
+  --secondary-accent: #f9d74a; /* Yellow */
+  --danger-color: #e76f51; /* Red */
+  --border-color: #e0e0e0;
+  --subtle-text-color: #6c757d;
+  --completed-text-color: #adb5bd;
+  --header-background: #ffffff;
+  --box-shadow-light: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
+
+/* Basic reset for consistency */
+html, body, #root {
+  height: 100%;
+  padding: 0;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  font-size: 1rem;
+  transition: background-color 0.2s ease;
+}
+
+input[type="text"] {
+  font-size: 1rem;
+}
+
+input[type="checkbox"] {
+  cursor: pointer;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+} 
